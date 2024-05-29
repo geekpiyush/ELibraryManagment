@@ -81,6 +81,11 @@
     <Content Include="imgs\book-online.png" />
     <Content Include="imgs\books.png" />
     <Content Include="imgs\books1.png" />
+    <Content Include="imgs\books\b1.jpg" />
+    <Content Include="imgs\books\b2.jpg" />
+    <Content Include="imgs\books\b3.jpg" />
+    <Content Include="imgs\books\b4.jpg" />
+    <Content Include="imgs\books\b5.jpg" />
     <Content Include="imgs\defaulters-list.png" />
     <Content Include="imgs\digital-data.png" />
     <Content Include="imgs\digital-inventory.png" />

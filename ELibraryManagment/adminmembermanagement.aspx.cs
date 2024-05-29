@@ -15,7 +15,7 @@ namespace ELibraryManagment
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            GridView1.DataBind();
         }
 
         // Go Button 
@@ -34,7 +34,14 @@ namespace ELibraryManagment
         // Delete Button
         protected void Button1_Click(object sender, EventArgs e)
         {
-
+            if(checkMemberExist())
+            {
+                deleteMember();
+            }
+            else
+            {
+                Response.Write("<script>alert('Invalid Member ID');</script>");
+            }
         }
 
         // check either member exist or not
@@ -61,7 +68,7 @@ namespace ELibraryManagment
                 }
                 else
                 {
-                    Response.Write("<script>alert('Invalid Member ID');</script>");
+                    //Response.Write("<script>alert('Invalid Member ID');</script>");
                     return false;
                 }
             }
@@ -84,7 +91,8 @@ namespace ELibraryManagment
                     con.Open();
                 }
 
-                SqlCommand cmd = new SqlCommand("SELECT * from member_master_tbl", con);
+                SqlCommand cmd = new SqlCommand("SELECT * from member_master_tbl where member_id= @member_id", con);
+                cmd.Parameters.AddWithValue("@member_id", TextBox3.Text.Trim());
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
 
@@ -120,17 +128,118 @@ namespace ELibraryManagment
                     //Account Status
                     TextBox7.Text = dt.Rows[0][10].ToString();
                 }
-                else
-                {
-                    Response.Write("<script>alert('Invalid Member ID');</script>");
-                }
+               
             }
             catch (Exception ex)
             {
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
-        
-      
+        void deleteMember()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(strcon);
+                if(con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                SqlCommand cmd = new SqlCommand("DELETE from member_master_tbl where member_id=@member_id", con);
+                cmd.Parameters.AddWithValue("@member_id", TextBox3.Text.Trim());
+
+                cmd.ExecuteNonQuery();
+
+                con.Close();
+
+                Response.Write("<script>alert('Member was deleted');</script>");
+                GridView1.DataBind();
+
+                ClearInputData();
+
+
+            }
+            catch(Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+            }
+        }
+        void ClearInputData()
+        {
+            // member ID
+            TextBox3.Text = "";
+            
+            //full name
+            TextBox4.Text = "";
+
+            // DOB
+            TextBox8.Text = "";
+
+            // Contact 
+            TextBox9.Text = "";
+
+            //emailID
+            TextBox10.Text = "";
+
+            //State
+            TextBox1.Text = "";
+
+            //City
+            TextBox2.Text = "";
+
+            //Pincode
+            TextBox5.Text = "";
+
+            //Full Address
+            TextBox6.Text = "";
+
+            //Account Status
+            TextBox7.Text = "";
+        }
+
+    // Status Active Button
+        protected void LinkButton12_Click(object sender, EventArgs e)
+        {
+            UpdateMemberStatus("Active");
+        }
+
+    // Status Pending Button
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            UpdateMemberStatus("Pending");
+        }
+
+      //Status Deactivate Button
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            UpdateMemberStatus("Deactivate");
+        }
+
+        // Update Member Status Using ID
+        void UpdateMemberStatus(string status)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(strcon);
+                if(con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                SqlCommand cmd = new SqlCommand("UPDATE member_master_tbl SET account_status='"+status+"' where member_id= @member_id", con);
+
+                cmd.Parameters.AddWithValue("@member_id",TextBox3.Text.Trim());
+
+                cmd.ExecuteNonQuery();
+
+                con.Close();
+
+                Response.Write("<script>alert('Member Status Updated');</script>");
+
+                GridView1.DataBind();
+            }
+            catch(Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+            }
+        }
     }
 }

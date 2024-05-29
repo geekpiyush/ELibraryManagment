@@ -51,13 +51,13 @@ namespace ELibraryManagment
         protected global::System.Web.UI.WebControls.TextBox TextBox7;
 
         /// <summary>
-        /// Button12 control.
+        /// LinkButton12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton Button12;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton12;
 
         /// <summary>
         /// LinkButton1 control.
@@ -148,6 +148,15 @@ namespace ELibraryManagment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
+        /// SqlDataSource1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
 
         /// <summary>
         /// GridView1 control.
