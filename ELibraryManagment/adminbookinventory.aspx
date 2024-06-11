@@ -317,9 +317,7 @@
                 </div>
             </div>
         </div>
-        <a href="homepage.aspx">&lt;&lt; Back to Home</a>
-        <br />
-        <br />
+        
     </div>
 
 </asp:Content>

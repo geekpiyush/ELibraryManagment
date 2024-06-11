@@ -105,6 +105,7 @@
     </Content>
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
+    <Content Include="viewBooks.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="adminauthormanagement.aspx.cs">
@@ -191,6 +192,13 @@
     </Compile>
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewBooks.aspx.cs">
+      <DependentUpon>viewBooks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewBooks.aspx.designer.cs">
+      <DependentUpon>viewBooks.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

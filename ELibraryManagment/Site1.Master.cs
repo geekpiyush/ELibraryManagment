@@ -64,7 +64,7 @@ namespace ELibraryManagment
       
         protected void LinkButton4_Click(object sender, EventArgs e)
         {
-            Response.Redirect("adminbookinventory.aspx");
+            Response.Redirect("viewBooks.aspx");
         }
 
         protected void LinkButton6_Click(object sender, EventArgs e)
